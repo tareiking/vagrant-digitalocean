@@ -1,5 +1,5 @@
 module VagrantPlugins
   module DigitalOcean
-    VERSION = '0.5.4'
+    VERSION = '1.0.0'
   end
 end
