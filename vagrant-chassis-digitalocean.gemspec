@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'vagrant-chassis-digitalocean/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "chassis-digitalocean"
+  gem.name          = "vagrant-chassis-digitalocean"
   gem.version       = VagrantPlugins::DigitalOcean::VERSION
   gem.authors       = ["Bronson Quick"]
   gem.email         = ["bronson@sennza.com.au"]
