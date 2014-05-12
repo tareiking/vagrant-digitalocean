@@ -1,6 +1,6 @@
-require 'vagrant-digitalocean/version'
-require 'vagrant-digitalocean/plugin'
-require 'vagrant-digitalocean/errors'
+require 'vagrant-chassis-digitalocean/version'
+require 'vagrant-chassis-digitalocean/plugin'
+require 'vagrant-chassis-digitalocean/errors'
 
 module VagrantPlugins
   module DigitalOcean

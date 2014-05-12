@@ -1,4 +1,4 @@
-require 'vagrant-digitalocean/helpers/result'
+require 'vagrant-chassis-digitalocean/helpers/result'
 require 'faraday'
 require 'json'
 
