@@ -1,19 +1,16 @@
-Digital Ocean Vagrant Provider
-==============================
-`vagrant-digitalocean` is a provider plugin for Vagrant that supports the
+Digital Ocean Vagrant Provider For Chassis
+==========================================
+`vagrant-chassis-digitalocean` is a provider plugin for Vagrant that supports the
 management of [Digital Ocean](https://www.digitalocean.com/) droplets
-(instances).
+(instances) that setup WordPress using [Chassis](https://github.com/Chassis/Chassis/).
 
-**NOTE:** The Chef provisioner is no longer supported by default (as of 0.2.0).
-Please use the `vagrant-omnibus` plugin to install Chef on Vagrant-managed
-machines. This plugin provides control over the specific version of Chef
-to install.
+**NOTE:** This plugin is based on the amazing work of the [vagrant-digitalocean
+](https://github.com/smdahlen/vagrant-digitalocean) plugin
 
 Current features include:
 - create and destroy droplets
 - power on and off droplets
 - rebuild a droplet
-- provision a droplet with the shell or Chef provisioners
 - setup a SSH public key for authentication
 - create a new user account during droplet creation
 
@@ -26,7 +23,7 @@ Installation of the provider requires two steps:
 
 1. Install the provider plugin using the Vagrant command-line interface:
 
-        $ vagrant plugin install vagrant-digitalocean
+        $ vagrant plugin install vagrant-chassis-digitalocean
 
 
 **NOTE:** If you are using a Mac, you may need to install a CA bundle to enable SSL
@@ -45,58 +42,16 @@ export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 Configure
 ---------
-Once the provider has been installed, you will need to configure your project
-to use it. The most basic `Vagrantfile` to create a droplet on Digital Ocean
-is shown below:
-
-```ruby
-Vagrant.configure('2') do |config|
-
-  config.vm.provider :digital_ocean do |provider, override|
-    override.ssh.private_key_path = '~/.ssh/id_rsa'
-    override.vm.box = 'digital_ocean'
-    override.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
-    
-    provider.client_id = 'YOUR CLIENT ID'
-    provider.api_key = 'YOUR API KEY'
-  end
-end
+Once the provider has been installed, you will need to configure your [Chassis](https://github.com/Chassis/Chassis/) project
+to use it. You can use your we recommend adding your Digital Ocean details in your projects `config.yaml` or `config.local.yaml` file:
+```bash
+digitalocean:
+  client_id: YOUR_CLIENT_ID
+  api_key: YOUR_API_KEY
+  region: 'Singapore 1'
+  size: '512MB'
+  image: 'Ubuntu 12.10 x32'
 ```
-
-Please note the following:
-- You *must* specify the `override.ssh.private_key_path` to enable authentication
-  with the droplet. The provider will create a new Digital Ocean SSH key using
-  your public key which is assumed to be the `private_key_path` with a *.pub*
-  extension.
-- You *must* specify your Digital Ocean Client and API keys. These may be
-  found on the control panel within the *My Settings > API Access* section.
-
-**Supported Configuration Attributes**
-
-The following attributes are available to further configure the provider:
-- `provider.image` - A string representing the image to use when creating a
-   new droplet (e.g. `Debian 6.0 x64`). The available options may
-   be found on Digital Ocean's new droplet [form](https://www.digitalocean.com/droplets/new).
-   It defaults to `Ubuntu 12.04.3 x64`.
-- `provider.region` - A string representing the region to create the new
-   droplet in. It defaults to `New York 2`.
-- `provider.size` - A string representing the size to use when creating a
-  new droplet (e.g. `1GB`). It defaults to `512MB`.
-- `provider.private_networking` - A boolean flag indicating whether to enable
-  a private network interface (if the region supports private networking). It
-  defaults to `false`.
-- `provider.backups_enabled` - A boolean flag indicating whether to enable backups for
-   the droplet. It defaults to `false`.
-- `provider.ssh_key_name` - A string representing the name to use when creating
-  a Digital Ocean SSH key for droplet authentication. It defaults to `Vagrant`.
-- `provider.setup` - A boolean flag indicating whether to setup a new user
-  account and modify sudo to disable tty requirement. It defaults to `true`.
-  If you are using a tool like [packer](https://packer.io) to create
-  reusable snapshots with user accounts already provisioned, set to `false`.
-
-The provider will create a new user account with the specified SSH key for
-authorization if `config.ssh.username` is set and the `provider.setup`
-attribute is `true`.
 
 Run
 ---

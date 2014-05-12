@@ -4,11 +4,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'vagrant-digitalocean/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "vagrant-digitalocean"
+  gem.name          = "chassis-digitalocean"
   gem.version       = VagrantPlugins::DigitalOcean::VERSION
-  gem.authors       = ["John Bender"]
-  gem.email         = ["john.m.bender@gmail.com"]
-  gem.description   = %q{Enables Vagrant to manage Digital Ocean droplets}
+  gem.authors       = ["Bronson Quick"]
+  gem.email         = ["bronson@sennza.com.au"]
+  gem.description   = %q{Enables Vagrant to manage instances of Chassis on Digital Ocean droplets}
   gem.summary       = gem.description
 
   gem.files         = `git ls-files`.split($/)
