@@ -1,4 +1,4 @@
-require 'vagrant-digitalocean/helpers/client'
+require 'vagrant-chassis-digitalocean/helpers/client'
 
 module VagrantPlugins
   module DigitalOcean

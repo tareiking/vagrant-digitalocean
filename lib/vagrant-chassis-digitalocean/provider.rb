@@ -1,4 +1,4 @@
-require 'vagrant-digitalocean/actions'
+require 'vagrant-chassis-digitalocean/actions'
 
 module VagrantPlugins
   module DigitalOcean
