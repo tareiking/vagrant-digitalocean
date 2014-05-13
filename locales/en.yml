@@ -73,7 +73,7 @@ en:
         ensure that your local certificates directory is defined in the
         provider config.
 
-            config.vm.provider :digital_ocean do |vm|
+            config.vm.provider :chassis_digitalocean do |vm|
               vm.ca_path = "/path/to/ssl/ca/cert.crt"
             end
 

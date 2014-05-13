@@ -1,10 +1,10 @@
-# if ! vagrant box list | grep digital_ocean 1>/dev/null; then
-#     vagrant box add digital_ocean box/digital_ocean.box
+# if ! vagrant box list | grep chassis_digitalocean 1>/dev/null; then
+#     vagrant box add chassis_digitalocean box/chassis_digitalocean.box
 # fi
 
 cd test
 
-vagrant up --provider=digital_ocean
+vagrant up --provider=chassis_digitalocean
 vagrant up
 vagrant provision
 vagrant rebuild

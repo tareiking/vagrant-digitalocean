@@ -7,12 +7,12 @@ module VagrantPlugins
         machines using DigitalOcean's API.
       DESC
 
-      config(:digital_ocean, :provider) do
+      config(:chassis_digitalocean, :provider) do
         require_relative 'config'
         Config
       end
 
-      provider(:digital_ocean) do
+      provider(:chassis_digitalocean) do
         require_relative 'provider'
         Provider
       end

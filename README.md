@@ -59,7 +59,7 @@ After creating your project's `Vagrantfile` with the required configuration
 attributes described above, you may create a new droplet with the following
 command:
 
-    $ vagrant up --provider=digital_ocean
+    $ vagrant up --provider=chassis_digitalocean
 
 This command will create a new droplet, setup your SSH key for authentication,
 create a new user account, and run the provisioners you have configured.
