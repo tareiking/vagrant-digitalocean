@@ -71,7 +71,7 @@ You must also add the following to your project `VagrantFile`
   end
 ```
 
-##Optional## you can remove exclude your .git folder from the rsync by including the following line after you've specified your
+**Optionally,** you can remove exclude your .git folder from the rsync by including the following line after you've specified your
 `config.vm.synced_folder`
 
 ```
