@@ -50,7 +50,7 @@ digitalocean:
   api_key: YOUR_API_KEY
   region: 'Singapore 1'
   size: '512MB'
-  image: 'Ubuntu 12.10 x32'
+  image: 'Ubuntu 12.04.4 x32'
 ```
 
 Run
