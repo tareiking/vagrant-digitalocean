@@ -53,6 +53,33 @@ digitalocean:
   image: 'Ubuntu 12.04.4 x32'
 ```
 
+You must also add the following to your project `VagrantFile`
+```
+  config.vm.provider :chassis_digitalocean do |provider, override|
+    override.ssh.private_key_path = '~/.ssh/id_rsa'
+    override.vm.box_url = 'https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/chassis_digitalocean.box'
+
+    provider.client_id = CONF['digitalocean']['client_id']
+    provider.api_key = CONF['digitalocean']['api_key']
+
+    end
+
+  config.vm.provider :chassis_digitalocean do |provider|
+    provider.image = CONF['digitalocean']['image']
+    provider.region = CONF['digitalocean']['region']
+    provider.size = CONF['digitalocean']['size']
+  end
+```
+
+##Optional## you can remove exclude your .git folder from the rsync by including the following line after you've specified your
+`config.vm.synced_folder`
+
+```
+    rsync__exclude: ".git/"
+```
+
+A sample VagrantFile can be found [here](https://gist.github.com/tareiking/b0bf8d93fdb3bdfb5911)
+
 Run
 ---
 After creating your project's `Vagrantfile` with the required configuration
